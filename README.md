@@ -30,6 +30,8 @@ AgileForge is a full-stack planning and execution workspace for hackathon teams.
 
 For full details see [Installation](docs/INSTALLATION.md), [Technology stack](docs/TECHNOLOGY.md), [Architecture](docs/ARCHITECTURE.md), [MongoDB schema](docs/MONGODB_SCHEMA.md), [API reference](docs/API.md), [Features and limitations](docs/FEATURES_AND_LIMITATIONS.md), and [Jury demonstration guide](docs/JURY_DEMO.md).
 
+For Render and Vercel deployment, see [Deployment](docs/DEPLOYMENT.md). The root `render.yaml` provisions the Express API; the React/Vite frontend is deployed separately on Vercel.
+
 ## Verification
 
 With local MongoDB available, run `cd backend` then `npm.cmd run test:integration` in PowerShell. The suite exercises REST flows and saves 13 formal executed test cases in a dedicated database named `agileforge_qa_<timestamp>`. The test output prints the exact database name. These QA records are kept separate from a normal `agileforge` development database.
