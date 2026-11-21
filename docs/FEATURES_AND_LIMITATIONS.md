@@ -16,7 +16,7 @@
 ## Known limitations
 
 - No browser automation suite is included. API integration and production compilation are verified; visual interaction should also be manually checked in a browser before a public demo.
-- The application has no configured Git remote or repository metadata in this workspace. GitHub hosting, real commit history, CI and deployment evidence remain to be set up by the project owner.
+- The application is published at [github.com/ShivamPawaskar/AgileForge](https://github.com/ShivamPawaskar/AgileForge). CI and deployment evidence are not configured. The initial repository commits document publication and should not be presented as historical sprint activity or individual contribution evidence.
 - Project recent-activity feed, report export, notification settings, integrations and most workspace preferences are deferred. Profile settings are persisted.
 - Burndown reconstructs from current task estimates and status history; deleted tasks and historical estimate/scope edits are not retained as snapshots.
 - Readiness depends on user-entered categories and test outcomes. It does not independently execute application tests or inspect code.

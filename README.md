@@ -42,7 +42,7 @@ Run `npm.cmd run test:render` from `frontend` to smoke-test initial React render
 - The sprint burndown is reconstructed from task creation dates and persisted status history. Historical scope edits are not versioned.
 - Recent activity timelines, notifications, project settings beyond the profile, and export/report downloads are not implemented as persisted features.
 - MVP readiness is a transparent rule-based checklist. It is not predictive AI and cannot prove a feature works beyond the recorded task and test evidence.
-- A production GitHub remote/repository and commit history are not configured in this workspace. No commits or individual contribution history are claimed by these docs.
+- The current application is published at [github.com/ShivamPawaskar/AgileForge](https://github.com/ShivamPawaskar/AgileForge). The repository setup commits record publication of the current codebase; they do not represent historical sprint activity or establish individual feature attribution.
 - Automated verification covers backend integration and frontend production compilation. No browser-driven UI automation suite is currently included.
 
 ## Documentation map

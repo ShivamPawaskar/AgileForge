@@ -30,4 +30,4 @@
 
 ## Task allocation and progress evidence
 
-An empty local Git repository has been initialized during final preparation, but it has no commits or remote. No authored sprint events are available. Do not infer who wrote a feature or fabricate historical task allocation. The codebase contains implemented backlog, sprint, task and readiness records, and the QA run produces its own timestamped test evidence; these are current artifacts, not proof of historical 48-hour work allocation.
+The application is published at [github.com/ShivamPawaskar/AgileForge](https://github.com/ShivamPawaskar/AgileForge). Its initial README and application upload commits record repository publication only; they do not document earlier sprint activity. No authored sprint events are available. Do not infer who wrote a feature or fabricate historical task allocation. The codebase contains implemented backlog, sprint, task and readiness records, and the QA run produces its own timestamped test evidence; these are current artifacts, not proof of historical 48-hour work allocation.

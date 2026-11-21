@@ -11,7 +11,7 @@
 7. **Kanban (60 sec):** Drag a task from To Do to In Progress or Done. Show that the move persists, and that the status history captures previous status, next status and timestamp.
 8. **Analytics (60 sec):** Open analytics and point out task counts, points, workload, burndown and rule-based health from the selected sprint's database records.
 9. **MVP readiness (90 sec):** Add test evidence, tag a core-workflow/demo task, run Evaluate. Open a failed check and explain its missing evidence and recommendation. Do not present the score as AI or automated feature testing.
-10. **Test and repository evidence (45 sec):** Run `npm.cmd run test:integration` in PowerShell, show the actual pass count, MongoDB database name and persisted test cases. State clearly that the local Git repository is initialized but has no commits or remote, so GitHub publishing/commit evidence is not configured.
+10. **Test and repository evidence (45 sec):** Run `npm.cmd run test:integration` in PowerShell, show the actual pass count, MongoDB database name and persisted test cases. Show [the AgileForge repository](https://github.com/ShivamPawaskar/AgileForge), and explain that its setup commits record publishing the current codebase, not historical sprint activity or individual feature attribution.
 
 ## Architecture explanation
 
@@ -30,7 +30,7 @@ The Vite React SPA calls the Express REST API through Axios. JWT middleware iden
 
 ## Contribution statement
 
-The local workspace has an empty Git repository but no remote URL, commits or contributor attribution. Do not claim specific individual ownership based only on the current files. A presenter can accurately describe their own verified contribution in first person, for example: “I worked on [the parts I personally implemented], and I verified [commands/results].” Fill the brackets from actual team records before presenting.
+The application is published at [github.com/ShivamPawaskar/AgileForge](https://github.com/ShivamPawaskar/AgileForge). The current setup commits do not establish historical contributor attribution. Do not claim specific individual ownership based only on the current files. A presenter can accurately describe their own verified contribution in first person, for example: “I worked on [the parts I personally implemented], and I verified [commands/results].” Fill the brackets from actual team records before presenting.
 
 ## Challenges and solutions visible in the implementation
 
