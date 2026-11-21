@@ -30,7 +30,7 @@ AgileForge is a full-stack planning and execution workspace for hackathon teams.
 
 For full details see [Installation](docs/INSTALLATION.md), [Technology stack](docs/TECHNOLOGY.md), [Architecture](docs/ARCHITECTURE.md), [MongoDB schema](docs/MONGODB_SCHEMA.md), [API reference](docs/API.md), [Features and limitations](docs/FEATURES_AND_LIMITATIONS.md), and [Jury demonstration guide](docs/JURY_DEMO.md).
 
-For Render and Vercel deployment, see [Deployment](docs/DEPLOYMENT.md). The root `render.yaml` provisions the Express API; the React/Vite frontend is deployed separately on Vercel.
+For deployment, see [Deployment](docs/DEPLOYMENT.md). The root `vercel.json` configures the React/Vite frontend and Express API as one Vercel multi-service project; `render.yaml` is also available for a separate Render API deployment.
 
 ## Verification
 

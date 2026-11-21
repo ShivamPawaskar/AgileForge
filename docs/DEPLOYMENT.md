@@ -1,8 +1,27 @@
-# Deploy AgileForge: Render API + Vercel frontend
+# Deploy AgileForge
 
-The root `render.yaml` defines the Express API as a Render web service. The React/Vite app is a separate Vercel project. MongoDB remains the application's database; provide a reachable MongoDB connection string when Render prompts for `MONGODB_URI`.
+The repository supports two hosting layouts: a single Vercel project with multiple services (configured in the root `vercel.json`), or a Render API with a separate Vercel frontend (configured in `render.yaml`). MongoDB remains the application's database for either layout.
 
-## 1. Deploy the backend on Render
+## Option A: Vercel multi-service project
+
+1. Import the GitHub repository as one Vercel project with the **Root Directory** set to the repository root (`.`). Do not import `backend` or `frontend` as standalone projects for this setup; the root `vercel.json` defines both services.
+2. Confirm the project detects Vercel Services. The `agileforge-api` Express service is routed publicly at `/api/*`; the Vite frontend is routed at `/` and has an SPA fallback for React Router paths.
+3. Add project environment variables in Vercel. Services share project environment variables:
+   - `MONGODB_URI`: a reachable MongoDB connection string.
+   - `JWT_SECRET`: a long, private random secret.
+   - `JWT_EXPIRES_IN`: `7d` (optional; this is the backend default).
+   - `CLIENT_URLS`: optional comma-separated exact origins if you need cross-origin API calls. The configured frontend uses same-origin `/api` requests, so cross-origin access is not needed for its normal operation.
+   - `VITE_API_URL`: `/api` (the frontend example file sets this value).
+4. Deploy. The API stays behind the public `/api/*` route, and other paths go to the frontend under the same Vercel domain.
+5. Check `https://<your-project>.vercel.app/api/health`; a healthy response contains `"status":"ok"`.
+
+There is no service binding in this setup: browser code calls the same public Vercel origin at `/api`, and Vercel's top-level rewrite routes that request to the API service. Bindings are for server-side service-to-service calls; this app has none.
+
+## Option B: Render API + separate Vercel frontend
+
+This alternative uses the root `render.yaml` for the API and a standalone Vercel project for the frontend.
+
+### Deploy the backend on Render
 
 1. Push this repository to GitHub and open the Render Dashboard.
 2. Choose **New → Blueprint**, connect the AgileForge repository, and select the branch to deploy. Render reads the root `render.yaml`.
@@ -13,7 +32,7 @@ The root `render.yaml` defines the Express API as a Render web service. The Reac
 
 The service uses Render's free web service plan. Free services can spin down while idle, so the first request after inactivity can take longer to respond. Upgrade the plan if you need an always-on API.
 
-## 2. Deploy the frontend on Vercel
+### Deploy the frontend on Vercel
 
 1. Import the same GitHub repository as a Vercel project.
 2. Set the **Root Directory** to `frontend`.
