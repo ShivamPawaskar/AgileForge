@@ -1,0 +1,1 @@
+export default function Avatar({ initials, color='violet', size='', avatarUrl='', alt='' }) { return <span className={`avatar avatar-${color} ${size} ${avatarUrl?'avatar-image':''}`} role={avatarUrl?'img':undefined} aria-label={avatarUrl?(alt||'Profile photo'):undefined}>{avatarUrl?<img src={avatarUrl} alt=""/>:initials}</span> }

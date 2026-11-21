@@ -1,0 +1,9 @@
+import TestCase from '../models/TestCase.js'
+import * as projects from '../services/projectService.js'
+import { asyncHandler } from '../utils/asyncHandler.js'
+import AppError from '../utils/AppError.js'
+const editable = ['title', 'caseId', 'scenario', 'classification', 'testType', 'category', 'input', 'expectedResult', 'actualResult', 'status']
+export const list = asyncHandler(async (req, res) => { await projects.accessibleProject(req.params.projectId, req.user.id); res.json({ success: true, data: await TestCase.find({ projectId: req.params.projectId }) }) })
+export const create = asyncHandler(async (req, res) => { await projects.accessibleProject(req.params.projectId, req.user.id); if (!req.body.title?.trim()) throw new AppError('Test case title is required', 400); const data = await TestCase.create({ ...Object.fromEntries(Object.entries(req.body).filter(([key]) => editable.includes(key))), projectId: req.params.projectId, title: req.body.title.trim() }); res.status(201).json({ success: true, data }) })
+export const update = asyncHandler(async (req, res) => { await projects.accessibleProject(req.params.projectId, req.user.id); const item = await TestCase.findOneAndUpdate({ _id: req.params.testCaseId, projectId: req.params.projectId }, Object.fromEntries(Object.entries(req.body).filter(([key]) => editable.includes(key))), { new: true, runValidators: true }); if (!item) throw new AppError('Test case not found', 404); res.json({ success: true, data: item }) })
+export const remove = asyncHandler(async (req, res) => { await projects.accessibleProject(req.params.projectId, req.user.id); const item = await TestCase.findOneAndDelete({ _id: req.params.testCaseId, projectId: req.params.projectId }); if (!item) throw new AppError('Test case not found', 404); res.json({ success: true, data: { id: item.id } }) })

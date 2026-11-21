@@ -50,4 +50,3 @@ Run `npm.cmd run test:render` from `frontend` to smoke-test initial React render
 - [Test cases and results](docs/TEST_CASES.md)
 - [48-hour build retrospective and jury talking points](docs/JURY_DEMO.md)
 - [Definition of Done and Agile evidence](docs/AGILE_EVIDENCE.md)
-
