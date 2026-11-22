@@ -6,14 +6,15 @@ The repository supports two hosting layouts: a single Vercel project with multip
 
 1. Import the GitHub repository as one Vercel project with the **Root Directory** set to the repository root (`.`). Do not import `backend` or `frontend` as standalone projects for this setup; the root `vercel.json` defines both services.
 2. Confirm the project detects Vercel Services. The `agileforge-api` Express service is routed publicly at `/api/*`; the Vite frontend is routed at `/` and has an SPA fallback for React Router paths.
-3. Add project environment variables in Vercel. Services share project environment variables:
+3. In MongoDB Atlas, create a database user for AgileForge with `readWrite` access to the `agileforge` database. Under **Security → Network Access → IP Access List**, add `0.0.0.0/0` with a comment such as `Vercel AgileForge API`. Vercel uses dynamic outbound IPs, so Atlas cannot restrict this deployment to one stable Vercel IP. Use a strong database-user password and URL-encode any reserved characters in the connection string.
+4. Add project environment variables in Vercel. Services share project environment variables:
    - `MONGODB_URI`: a reachable MongoDB connection string.
    - `JWT_SECRET`: a long, private random secret.
    - `JWT_EXPIRES_IN`: `7d` (optional; this is the backend default).
    - `CLIENT_URLS`: optional comma-separated exact origins if you need cross-origin API calls. The configured frontend uses same-origin `/api` requests, so cross-origin access is not needed for its normal operation.
    - `VITE_API_URL`: `/api` (the frontend example file sets this value).
-4. Deploy. The API stays behind the public `/api/*` route, and other paths go to the frontend under the same Vercel domain.
-5. Check `https://<your-project>.vercel.app/api/health/database`; a healthy response contains `"database":"connected"`. If it returns `503`, verify the connection string and Atlas IP access list.
+5. Deploy. The API stays behind the public `/api/*` route, and other paths go to the frontend under the same Vercel domain.
+6. Check `https://<your-project>.vercel.app/api/health/database`; a healthy response contains `"database":"connected"`. If it returns `503`, verify the connection string, Atlas database user, and Atlas IP access list.
 
 There is no service binding in this setup: browser code calls the same public Vercel origin at `/api`, and Vercel's top-level rewrite routes that request to the API service. Bindings are for server-side service-to-service calls; this app has none.
 
