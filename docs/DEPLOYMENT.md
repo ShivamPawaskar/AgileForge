@@ -13,7 +13,7 @@ The repository supports two hosting layouts: a single Vercel project with multip
    - `CLIENT_URLS`: optional comma-separated exact origins if you need cross-origin API calls. The configured frontend uses same-origin `/api` requests, so cross-origin access is not needed for its normal operation.
    - `VITE_API_URL`: `/api` (the frontend example file sets this value).
 4. Deploy. The API stays behind the public `/api/*` route, and other paths go to the frontend under the same Vercel domain.
-5. Check `https://<your-project>.vercel.app/api/health`; a healthy response contains `"status":"ok"`.
+5. Check `https://<your-project>.vercel.app/api/health/database`; a healthy response contains `"database":"connected"`. If it returns `503`, verify the connection string and Atlas IP access list.
 
 There is no service binding in this setup: browser code calls the same public Vercel origin at `/api`, and Vercel's top-level rewrite routes that request to the API service. Bindings are for server-side service-to-service calls; this app has none.
 

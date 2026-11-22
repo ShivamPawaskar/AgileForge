@@ -2,6 +2,11 @@
 
 Base URL: `http://localhost:5000/api`. All `/projects` routes require `Authorization: Bearer <JWT>`. JSON errors use `{ "success": false, "message": "..." }` and may include `details`.
 
+| Method | Path | Purpose |
+|---|---|---|
+| GET | `/health` | API process health |
+| GET | `/health/database` | MongoDB connection health |
+
 ## Authentication
 
 | Method | Path | Purpose |
