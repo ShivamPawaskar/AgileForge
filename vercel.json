@@ -9,7 +9,7 @@
     "frontend": {
       "root": "frontend/",
       "framework": "vite",
-      "installCommand": "npm ci",
+      "installCommand": "npm ci --include=dev",
       "rewrites": [
         {
           "source": "/(.*)",
